@@ -209,6 +209,25 @@
 
   <p style="margin-top: 20px;">&copy; 2025 Aphiwe Joko. All rights reserved.</p>
 </footer>
+<div id="chat-bubble" onclick="toggleMessageBox()">
+  <i class="fas fa-comment-dots"></i>
+</div>
+
+<div id="chat-box" style="display: none;">
+  <div class="chat-header">
+    Send a Message to Aphiwe
+    <span class="close-btn" onclick="closeMessageBox()">&times;</span>
+  </div>
+  <form id="chat-form">
+    <input type="text" id="chat-name" placeholder="Your Name" required>
+    <input type="email" id="chat-email" placeholder="Your Email" required>
+    <textarea id="chat-message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+    <div id="chat-status"></div>
+  </form>
+</div>
+
+
 
 <script src="script.js"></script>
 </body>
