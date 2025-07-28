@@ -40,3 +40,62 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+  function toggleMessageBox() {
+    const box = document.getElementById("chat-box");
+    box.style.display = box.style.display === "none" ? "block" : "none";
+  }
+
+  document.getElementById("chat-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const status = document.getElementById("chat-status");
+
+    const data = {
+      name: document.getElementById("chat-name").value,
+      email: document.getElementById("chat-email").value,
+      message: document.getElementById("chat-message").value
+    };
+
+    // Example using Formspree endpoint
+    fetch("https://formspree.io/f/mldlnbnw", {
+      method: "POST",
+      headers: { 'Accept': 'application/json' },
+      body: new URLSearchParams(data)
+    }).then(response => {
+      if (response.ok) {
+        status.textContent = "Message sent!";
+        this.reset();
+      } else {
+        status.textContent = "Error sending message.";
+      }
+    }).catch(() => {
+      status.textContent = "Something went wrong.";
+    });
+  });
+ // Toggle chat box visibility
+  function toggleMessageBox() {
+    const chatBox = document.getElementById('chat-box');
+    chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // Close chat box
+  function closeMessageBox() {
+    document.getElementById('chat-box').style.display = 'none';
+  }
+
+  // Form submission
+  document.getElementById('chat-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const status = document.getElementById('chat-status');
+    status.textContent = "Message sent! (This is a demo)";
+    status.style.color = "green";
+    
+    // Clear form
+    this.reset();
+    
+    // Hide message after 3 seconds
+    setTimeout(() => {
+      status.textContent = "";
+    }, 3000);
+  });
+
+
